@@ -45,6 +45,29 @@
         </div>
         <div id="photographer-price">300€ / jour</div>
       </div>
+
+      <!-- Lightbox -->
+    <div id="lightbox_modal">
+      <div class="lightbox-container">
+        <div class="lightbox-header">
+          <div class="lightbox-title">
+            <h2 class="lightbox-media-title"></h2>
+            <span class="lightbox-counter"></span>
+          </div>
+          <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        </div>
+        
+        <div class="lightbox-media-container"></div>
+        
+        <div class="lightbox-footer">
+          <div class="lightbox-nav">
+            <button class="lightbox-prev" onclick="previousMedia()">❮</button>
+            <button class="lightbox-next" onclick="nextMedia()">❯</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     </main>
     
     <div id="contact_modal">
@@ -76,6 +99,7 @@
     </div>
     <script src="scripts/utils/sort.js"></script>
     <script src="scripts/utils/likes.js"></script>
+    <script src="scripts/utils/lightbox.js"></script>
     <script src="scripts/templates/photographerPage.js"></script>
     <script src="scripts/templates/media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>

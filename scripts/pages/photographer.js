@@ -28,6 +28,10 @@ async function displayPhotographerHeader(photographer) {
 
 async function displayPhotographerMedia(medias, photographerName) {
     const mediaSection = document.querySelector('.photographer-media');
+    const mainElement = document.getElementById('main');
+    
+    // Stocker le nom du photographe pour la lightbox
+    mainElement.dataset.photographerName = photographerName;
     
     medias.forEach((media) => {
         const mediaModel = mediaTemplate(media, photographerName);
@@ -35,8 +39,11 @@ async function displayPhotographerMedia(medias, photographerName) {
         mediaSection.appendChild(mediaCardDOM);
     });
     
-    // Mettre à jour le total des likes après l'affichage
+    // Mettre a jour le total de like apres l'affichage
     updateTotalLikes();
+    
+    // Initialiser la lightbox avec tous les médias
+    initLightbox(medias);
 }
 
 async function init() {

@@ -1,11 +1,9 @@
 let currentMediaIndex = 0;
 let allMedias = [];
 
-// Initialiser la lightbox
 function initLightbox(medias) {
     allMedias = medias;
     
-    // Ajouter les event listeners à tous les médias
     const mediaCards = document.querySelectorAll('.media-card');
     mediaCards.forEach((card, index) => {
         const mediaContainer = card.querySelector('.media-container');
@@ -15,7 +13,6 @@ function initLightbox(medias) {
     });
 }
 
-// Ouvrir la lightbox
 function openLightbox(index) {
     currentMediaIndex = index;
     const lightboxModal = document.getElementById('lightbox_modal');
@@ -23,7 +20,6 @@ function openLightbox(index) {
     displayCurrentMedia();
 }
 
-// Fermer la lightbox
 function closeLightbox() {
     const lightboxModal = document.getElementById('lightbox_modal');
     lightboxModal.style.display = 'none';
@@ -34,13 +30,13 @@ function closeLightbox() {
     }
 }
 
-// Afficher le média courant
 function displayCurrentMedia() {
     const lightboxModal = document.getElementById('lightbox_modal');
     const mediaContainer = lightboxModal.querySelector('.lightbox-media-container');
-    const mediaTitle = lightboxModal.querySelector('.lightbox-media-title');
+    const footerTitle = lightboxModal.querySelector('.lightbox-footer-title');
     const counterElement = lightboxModal.querySelector('.lightbox-counter');
     
+    // Vider le conteneur
     mediaContainer.innerHTML = '';
     
     const media = allMedias[currentMediaIndex];
@@ -60,13 +56,12 @@ function displayCurrentMedia() {
         mediaContainer.appendChild(video);
     }
     
-    mediaTitle.textContent = media.title;
+    footerTitle.textContent = media.title;
     counterElement.textContent = `${currentMediaIndex + 1} / ${allMedias.length}`;
     
     updateNavigationButtons();
 }
 
-// Mettre à jour l'état des boutons de navigation
 function updateNavigationButtons() {
     const prevButton = document.querySelector('.lightbox-prev');
     const nextButton = document.querySelector('.lightbox-next');
@@ -75,7 +70,6 @@ function updateNavigationButtons() {
     nextButton.disabled = currentMediaIndex === allMedias.length - 1;
 }
 
-// Aller au média précédent
 function previousMedia() {
     if (currentMediaIndex > 0) {
         currentMediaIndex--;
@@ -83,7 +77,6 @@ function previousMedia() {
     }
 }
 
-// Aller au média suivant
 function nextMedia() {
     if (currentMediaIndex < allMedias.length - 1) {
         currentMediaIndex++;
@@ -91,7 +84,6 @@ function nextMedia() {
     }
 }
 
-// Navigation au clavier
 document.addEventListener('keydown', function(e) {
     const lightboxModal = document.getElementById('lightbox_modal');
     
@@ -106,7 +98,6 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Fermer la lightbox en cliquant sur l'overlay
 window.addEventListener('click', function(event) {
     const lightboxModal = document.getElementById('lightbox_modal');
     

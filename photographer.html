@@ -47,35 +47,39 @@
       </div>
 
       <!-- Lightbox -->
-    <div id="lightbox_modal">
-      <div class="lightbox-container">
-        <div class="lightbox-header">
-          <div class="lightbox-title">
-            <h2 class="lightbox-media-title"></h2>
-            <span class="lightbox-counter"></span>
+      <div id="lightbox_modal">
+        <div class="lightbox-container">
+          <div class="lightbox-header">
+            <button class="lightbox-close" onclick="closeLightbox()">✕</button>
           </div>
-          <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-        </div>
-        
-        <div class="lightbox-media-container"></div>
-        
-        <div class="lightbox-footer">
-          <div class="lightbox-nav">
-            <button class="lightbox-prev" onclick="previousMedia()">❮</button>
-            <button class="lightbox-next" onclick="nextMedia()">❯</button>
+          
+          <div class="lightbox-content">
+            <div class="lightbox-nav">
+              <button class="lightbox-prev" onclick="previousMedia()">❮</button>
+              <div class="lightbox-media-container"></div>
+              <button class="lightbox-next" onclick="nextMedia()">❯</button>
+            </div>
+          </div>
+          
+          <div class="lightbox-footer">
+            <div class="lightbox-media-info">
+              <h3 class="lightbox-footer-title"></h3>
+              <span class="lightbox-counter"></span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
     </main>
     
+    <!-- Modal de contact -->
     <div id="contact_modal">
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" alt="Fermer" />
         </header>
+        <div class="photographer-name-modal"></div>
         <form>
           <div>
             <label for="first-name">Prénom</label>
@@ -93,7 +97,7 @@
             <label for="message">Votre message</label>
             <textarea id="message" name="message" rows="5"></textarea>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" type="submit">Envoyer</button>
         </form>
       </div>
     </div>

@@ -322,7 +322,13 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+}
+
+.photographer-name-modal {
+    width: 100%;
     margin-bottom: 20px;
+    font-size: 64px;
+    color: black;
 }
 
 .modal header img {
@@ -361,7 +367,7 @@ form div {
 form input,
 form textarea {
     width: 100%;
-    height: 68px;
+    height: 35px;
     border: none;
     border-radius: 5px;
     padding: 10px;
@@ -398,9 +404,9 @@ form .contact_button {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 1300px;
+    max-width: 1200px;
     height: 100%;
-    max-height: 950px;
+    max-height: 1000px;
     position: relative;
     background-color: white;
     border-radius: 5px;
@@ -409,29 +415,12 @@ form .contact_button {
 
 .lightbox-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 20px 30px;
-    background-color: #FAFAFA;
-    border-bottom: 2px solid #E8E8E8;
-}
-
-.lightbox-title {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.lightbox-media-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #901C1C;
-    margin: 0;
-}
-
-.lightbox-counter {
-    font-size: 14px;
-    color: #525252;
+    background-color: white;
+    border-bottom: none;
+    flex-shrink: 0;
 }
 
 .lightbox-close {
@@ -454,20 +443,76 @@ form .contact_button {
     color: #D3573C;
 }
 
-.lightbox-media-container {
+.lightbox-content {
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 1;
+    position: relative;
     overflow: hidden;
     background-color: white;
+    min-height: 0; /* Important pour que flex fonctionne correctement */
+}
+
+.lightbox-media-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .lightbox-media-container img,
 .lightbox-media-container video {
     max-width: 100%;
     max-height: 100%;
+    width: auto;
+    height: auto;
     object-fit: contain;
+}
+
+.lightbox-nav {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 30px;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    background-color: transparent;
+    color: #901C1C;
+    border: none;
+    padding: 10px;
+    font-size: 48px;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    font-weight: bold;
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.lightbox-prev:hover:not(:disabled),
+.lightbox-next:hover:not(:disabled) {
+    color: #D3573C;
+    transform: scale(1.3);
+}
+
+.lightbox-prev:disabled,
+.lightbox-next:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
 }
 
 .lightbox-footer {
@@ -477,57 +522,23 @@ form .contact_button {
     padding: 20px 30px;
     background-color: #FAFAFA;
     border-top: 2px solid #E8E8E8;
+    flex-shrink: 0;
 }
 
-.lightbox-nav {
+.lightbox-media-info {
     display: flex;
-    justify-content: space-between;
+    gap: 20px;
     align-items: center;
-    width: 100%;
-    gap: 30px;
 }
 
-.lightbox-prev,
-.lightbox-next {
-    background-color: transparent;
-    color: #901C1C;
-    border: none;
-    padding: 10px;
-    font-size: 32px;
-    cursor: pointer;
-    transition: color 0.2s ease;
+.lightbox-media-info h3 {
+    font-size: 18px;
     font-weight: bold;
+    color: #901C1C;
+    margin: 0;
 }
 
-.lightbox-prev:hover:not(:disabled),
-.lightbox-next:hover:not(:disabled) {
-    color: #D3573C;
-    transform: scale(1.2);
-}
-
-.lightbox-prev:disabled,
-.lightbox-next:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    #lightbox_modal {
-        padding: 10px;
-    }
-    
-    .lightbox-container {
-        max-height: 500px;
-    }
-    
-    .lightbox-header,
-    .lightbox-footer {
-        padding: 15px 20px;
-    }
-    
-    .lightbox-prev,
-    .lightbox-next {
-        font-size: 24px;
-    }
+.lightbox-counter {
+    font-size: 14px;
+    color: #525252;
 }

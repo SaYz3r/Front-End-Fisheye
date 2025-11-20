@@ -1,6 +1,11 @@
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "flex"; // Utiliser flex pour centrer
+
+    // Récupérer le nom du photographe et l'afficher dans la modal
+    const photographerName = document.querySelector('[data-photographer-name]').dataset.photographerName;
+    const nameContainer = document.querySelector('.photographer-name-modal');
+    nameContainer.textContent = photographerName;
 }
 
 function closeModal() {

@@ -7,12 +7,13 @@ function mediaTemplate(media, photographerName) {
         const article = document.createElement('article');
         article.classList.add('media-card');
         article.dataset.mediaId = id;
-        article.dataset.originalLikes = likes; // Stocker les likes originaux
+        article.dataset.originalLikes = likes;
         article.dataset.date = date;
         
-        // Conteneur du média
+        // Conteneur du média - rendre focusable avec TAB
         const mediaContainer = document.createElement('div');
         mediaContainer.classList.add('media-container');
+        mediaContainer.setAttribute('tabindex', '0');
         
         if (image) {
             const img = document.createElement('img');
@@ -27,6 +28,26 @@ function mediaTemplate(media, photographerName) {
             mediaContainer.appendChild(videoElement);
         }
         
+        // Gérer l'ouverture de la lightbox avec Entrée ou Espace
+        mediaContainer.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const allCards = document.querySelectorAll('.media-card');
+                const index = Array.from(allCards).indexOf(article);
+                openLightbox(index);
+            }
+        });
+        
+        // Ajouter un focus visible
+        mediaContainer.addEventListener('focus', function() {
+            this.style.outline = '3px solid #901C1C';
+            this.style.outlineOffset = '2px';
+        });
+        
+        mediaContainer.addEventListener('blur', function() {
+            this.style.outline = 'none';
+        });
+        
         // Informations du média
         const infoDiv = document.createElement('div');
         infoDiv.classList.add('media-info');
@@ -38,7 +59,6 @@ function mediaTemplate(media, photographerName) {
         likesContainer.classList.add('likes-container');
         
         const likesElement = document.createElement('span');
-        // Afficher les likes actuels (JSON + modifications)
         likesElement.textContent = getCurrentLikes(id, likes);
         likesElement.classList.add('likes-count');
         
@@ -46,7 +66,7 @@ function mediaTemplate(media, photographerName) {
         heartIcon.textContent = '❤️';
         heartIcon.classList.add('heart-icon');
         heartIcon.setAttribute('role', 'button');
-        heartIcon.setAttribute('aria-label', 'Aimer cette photo');
+        heartIcon.setAttribute('aria-label', `Aimer ${title}`);
         heartIcon.setAttribute('tabindex', '0');
         
         // Vérifier si déjà liké

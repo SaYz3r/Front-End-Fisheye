@@ -111,7 +111,9 @@
     font-size: 18px;
     font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 1px solid #FAFAFA;
     cursor: pointer;
     min-width: 170px;
     text-align: left;
@@ -128,7 +130,7 @@
     display: none;
     position: absolute;
     min-width: 170px;
-    z-index: 1;
+    z-index: 5;
     top: calc(100% - 5px); /* Chevauche légèrement le bouton */
     left: 0;
     padding-top: 5px; /* Compense le chevauchement */

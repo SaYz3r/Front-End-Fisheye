@@ -90,24 +90,31 @@ function updateNavigationButtons() {
     const prevButton = document.querySelector('.lightbox-prev');
     const nextButton = document.querySelector('.lightbox-next');
     
-    prevButton.disabled = currentMediaIndex === 0;
-    nextButton.disabled = currentMediaIndex === displayedMedias.length - 1;
+    // Les boutons ne sont jamais désactivés maintenant (boucle infinie)
+    prevButton.disabled = false;
+    nextButton.disabled = false;
 }
 
 // Aller au média précédent
 function previousMedia() {
     if (currentMediaIndex > 0) {
         currentMediaIndex--;
-        displayCurrentMedia();
+    } else {
+        // Boucler vers la dernière photo
+        currentMediaIndex = displayedMedias.length - 1;
     }
+    displayCurrentMedia();
 }
 
 // Aller au média suivant
 function nextMedia() {
     if (currentMediaIndex < displayedMedias.length - 1) {
         currentMediaIndex++;
-        displayCurrentMedia();
+    } else {
+        // Boucler vers la première photo
+        currentMediaIndex = 0;
     }
+    displayCurrentMedia();
 }
 
 // Navigation au clavier

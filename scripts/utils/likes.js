@@ -73,14 +73,7 @@ function updateTotalLikes() {
     }
 }
 
-// Calculer le total initial des likes depuis les données
-function calculateInitialTotalLikes(medias) {
-    const likeDeltas = getLikeDeltas();
-    
-    const totalLikes = medias.reduce((sum, media) => {
-        const delta = likeDeltas[media.id] || 0;
-        return sum + media.likes + delta;
-    }, 0);
-    
-    return totalLikes;
-}
+export { updateTotalLikes };
+export { getCurrentLikes };
+export { getLikedMedias };
+export { toggleLike };

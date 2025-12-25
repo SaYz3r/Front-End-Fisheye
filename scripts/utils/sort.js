@@ -1,3 +1,5 @@
+import { updateDisplayedMediasOrder } from "./lightbox.js";
+
 document.addEventListener('DOMContentLoaded', function() {
     const sortButton = document.getElementById('sort-button');
     const sortOptions = document.getElementById('sort-options');
@@ -69,38 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialisation : tri par défaut = popularity
     updateSortList("popularity");
 });
-
-// Réorganiser les options de tri : mettre la sélection EN PREMIER (sans la supprimer)
-function reorganizeSortOptions(selectedSort) {
-    const sortOptions = document.getElementById('sort-options');
-    if (!sortOptions) return;
-
-    // Définitions canonique des options (texte exact tel qu'affiché et clé data-sort)
-    const allOptions = [
-        { text: 'Popularité', sort: 'popularity' },
-        { text: 'Date', sort: 'date' },
-        { text: 'Titre', sort: 'title' }
-    ];
-
-    // Trouver l'option sélectionnée et les autres
-    const selected = allOptions.find(o => o.sort === selectedSort) || allOptions[0];
-    const others = allOptions.filter(o => o.sort !== selected.sort);
-
-    // Vider et reconstruire la liste : sélection en premier, puis les autres
-    sortOptions.innerHTML = '';
-
-    // Helper for creating a div.option
-    function makeOption(opt) {
-        const d = document.createElement('div');
-        d.className = 'sort-option';
-        d.setAttribute('data-sort', opt.sort);
-        d.textContent = opt.text;
-        return d;
-    }
-
-    sortOptions.appendChild(makeOption(selected));
-    others.forEach(o => sortOptions.appendChild(makeOption(o)));
-}
 
 // Fonction de tri des médias
 function sortMedia(sortType) {

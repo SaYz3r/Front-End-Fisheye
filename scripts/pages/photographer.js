@@ -1,3 +1,8 @@
+import { photographerPageTemplate } from "../templates/photographerPage.js";
+import { mediaTemplate } from "../templates/media.js";
+import { updateTotalLikes } from "../utils/likes.js";
+import { initLightbox } from "../utils/lightbox.js";
+
 async function getPhotographerData() {
     try {
         const response = await fetch('data/photographers.json');

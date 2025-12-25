@@ -12,22 +12,26 @@ function displayModal() {
     firstInput.focus();
 }
 
+window.displayModal = displayModal;
+
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
 }
+
+window.closeModal = closeModal;
 
 // Fermer le modal en cliquant en dehors
 window.onclick = function(event) {
     const modal = document.getElementById("contact_modal");
     if (event.target === modal) {
         modal.style.display = "none";
-    }
-}
+    };
+};
 
 document.addEventListener("keydown", function(event) {
   // Vérifie si la touche pressée est "Escape" et si la modal est visible
-  if (event.key === "Escape" && contact_modal.style.display === "flex") {
+  if (event.key === "Escape" && this.contact_modal.style.display === "flex") {
     // Si on est sur la page de confirmation, vider le formulaireS
       closeModal();
   }

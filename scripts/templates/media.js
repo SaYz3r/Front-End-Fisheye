@@ -1,3 +1,8 @@
+import { openLightbox } from "../utils/lightbox.js";
+import { getCurrentLikes } from "../utils/likes.js";
+import { getLikedMedias } from "../utils/likes.js";
+import { toggleLike } from "../utils/likes.js";
+
 function mediaTemplate(media, photographerName) {
     const { id, title, image, video, likes, date } = media;
     
@@ -104,3 +109,5 @@ function mediaTemplate(media, photographerName) {
     
     return { id, likes, getMediaCardDOM };
 }
+
+export { mediaTemplate };

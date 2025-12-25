@@ -8,7 +8,7 @@ function initLightbox(medias) {
     displayedMedias = [...medias]; // Copier les médias dans l'ordre actuel
     
     const mediaCards = document.querySelectorAll('.media-card');
-    mediaCards.forEach((card, index) => {
+    mediaCards.forEach((card) => {
         const mediaContainer = card.querySelector('.media-container');
         mediaContainer.addEventListener('click', function() {
             // Mettre à jour l'ordre des médias avant d'ouvrir
@@ -51,6 +51,8 @@ function closeLightbox() {
         video.pause();
     }
 }
+
+window.closeLightbox = closeLightbox;
 
 // Afficher le média courant
 function displayCurrentMedia() {
@@ -106,6 +108,8 @@ function previousMedia() {
     displayCurrentMedia();
 }
 
+window.previousMedia = previousMedia;
+
 // Aller au média suivant
 function nextMedia() {
     if (currentMediaIndex < displayedMedias.length - 1) {
@@ -116,6 +120,8 @@ function nextMedia() {
     }
     displayCurrentMedia();
 }
+
+window.nextMedia = nextMedia;
 
 // Navigation au clavier
 document.addEventListener('keydown', function(e) {
@@ -140,3 +146,7 @@ window.addEventListener('click', function(event) {
         closeLightbox();
     }
 });
+
+export { initLightbox };
+export { openLightbox };
+export { updateDisplayedMediasOrder };

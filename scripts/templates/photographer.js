@@ -47,5 +47,7 @@ function photographerTemplate(data) {
         return link;
     }
     
-    return { name, picture, getUserCardDOM }
+    return { name, picture, getUserCardDOM };
 }
+
+export { photographerTemplate };

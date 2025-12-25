@@ -39,3 +39,5 @@ function photographerPageTemplate(photographer) {
     
     return { getPhotographerHeaderDOM };
 }
+
+export { photographerPageTemplate };
